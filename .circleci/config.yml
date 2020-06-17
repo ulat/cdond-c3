@@ -1,15 +1,6 @@
 version: 2.1
 
 jobs:
-  hello-world:
-    docker:
-      - image: amazon/aws-cli
-    steps:
-      - checkout
-      - run:
-          name: Say Hello
-          command: |
-            echo "Hello World"
             
   build-backend:
     docker:
@@ -21,6 +12,8 @@ jobs:
       - run: npm run-script build
       
   build-frontend:
+    requires:
+      - build-backend
     docker:
       - image: 'circleci/node:latest'
     steps:
