@@ -7,7 +7,6 @@ jobs:
       - image: 'circleci/node:14'
     steps:
       - checkout
-      - run: cd util && pwd && ls && docker-compose up
       - run: cd backend && npm install && npm run-script build
       
   build-frontend:
