@@ -7,10 +7,10 @@ jobs:
       - image: 'circleci/node:latest'
     steps:
       - checkout
-      - run: cd backend
-      - run: npm install
       - run: cd utils
       - run: docker-compose up
+      - run: cd ../backend
+      - run: npm install
       - run: npm run-script build
       
   build-frontend:
