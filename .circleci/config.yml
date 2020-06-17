@@ -18,6 +18,7 @@ jobs:
       - checkout
       - run: cd backend
       - run: npm i
+      - run: npm run-script build
       
   build-frontend:
     docker:
@@ -26,6 +27,7 @@ jobs:
       - checkout
       - run: cd frontend
       - run: npm i
+      - run: npm run-script build
   
   backend-tests:
     docker:
