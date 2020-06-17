@@ -32,3 +32,10 @@ workflows:
       - build-frontend:
           requires:
             - build-backend
+      - backend-tests:
+          requires:
+            - build-backend
+      - frontend-tests:
+          requires:
+            - build-frontend
+            - backend-tests
