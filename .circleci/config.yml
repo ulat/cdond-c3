@@ -25,7 +25,8 @@ jobs:
       - checkout
       - run: cd backend && npm install
       - run: cd backend && npm run test
-      - store_test_results
+      - store_test_results:
+          path: /tmp/test-results
       
   frontend-tests:
     docker:
@@ -34,7 +35,8 @@ jobs:
       - checkout
       - run: cd frontend && npm i 
       - run: cd frontend && npm run test
-      - store_test_results
+      - store_test_results:
+          path: /tmp/test-results
 
 workflows:
   default:
