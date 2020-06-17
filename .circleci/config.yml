@@ -23,6 +23,7 @@ jobs:
       - image: 'circleci/node:latest'
     steps:
       - checkout
+      - run: cd backend && npm install
       - run: cd backend && npm run test
       
   frontend-tests:
@@ -30,6 +31,7 @@ jobs:
       - image: 'circleci/node:latest'
     steps:
       - checkout
+      - run: cd frontend && npm i 
       - run: cd frontend && npm run test
 
 workflows:
