@@ -7,21 +7,23 @@ jobs:
       - image: 'circleci/node:14'
     steps:
       - checkout
-      - run: cd backend && npm install && npm run-script build
+      - run: cd backend && npm install
+      - run: cd backend && npm run-script build
       
   build-frontend:
     docker:
       - image: 'circleci/node:latest'
     steps:
       - checkout
-      - run: cd frontend && npm i && npm run-script build
+      - run: cd frontend && npm i 
+      - run: cd frontend && npm run-script build
   
   backend-tests:
     docker:
       - image: 'circleci/node:latest'
     steps:
       - checkout
-      - run: cd backend && npm i && npm run tests
+      - run: cd backend && npm run tests
 
 workflows:
   default:
