@@ -11,23 +11,21 @@ jobs:
           command: |
             echo "Hello World"
             
-  lint-backend:
+  build-backend:
     docker:
       - image: 'circleci/node:latest'
     steps:
       - checkout
       - run: cd backend
       - run: npm i
-      - run: npm lint
       
-  lint-frontend:
+  build-frontend:
     docker:
       - image: 'circleci/node:latest'
     steps:
       - checkout
       - run: cd frontend
       - run: npm i
-      - run: npm lint
   
   backend-tests:
     docker:
@@ -41,5 +39,5 @@ jobs:
 workflows:
   default:
     jobs:
-      - lint-backend
-      - lint-frontend
+      - build-backend
+      - build-frontend
