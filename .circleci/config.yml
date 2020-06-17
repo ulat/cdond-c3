@@ -10,6 +10,15 @@ jobs:
           name: Say Hello
           command: |
             echo "Hello World"
+            
+  backend-tests:
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - run: cd backend
+      - run: npm i
+      - run: npm run tests
 
 workflows:
   default:
