@@ -4,7 +4,7 @@ jobs:
             
   build-backend:
     docker:
-      - image: 'circleci/node:latest'
+      - image: 'circleci/node:14'
     steps:
       - checkout
       - run: cd utils
