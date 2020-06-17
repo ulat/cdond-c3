@@ -37,6 +37,20 @@ jobs:
       - run: cd frontend && npm run test
       - store_test_results:
           path: /tmp/test-results
+          
+  frontend-vulnerability-check:
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - run: cd frontend && npm audit --audit-level=critical
+      
+  backend-vulnerability-check:
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - run: cd backend && npm audit --audit-level=critical
 
 workflows:
   default:
@@ -49,3 +63,9 @@ workflows:
       - frontend-tests:
           requires:
             - build-frontend
+      - backend-vulnerability-check:
+          requires:
+            - backend-tests
+      - frontend-vulnerability-check:
+          requires:
+            - frontend-tests
