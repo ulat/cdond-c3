@@ -23,14 +23,14 @@ jobs:
       - image: 'circleci/node:latest'
     steps:
       - checkout
-      - run: cd backend && npm run tests
+      - run: cd backend && npm run test
       
   frontend-tests:
     docker:
       - image: 'circleci/node:latest'
     steps:
       - checkout
-      - run: cd frontend && npm run tests
+      - run: cd frontend && npm run test
 
 workflows:
   default:
